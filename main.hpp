@@ -2,12 +2,22 @@
 #include <fstream>
 
 using namespace std;
-const int SIZE = 3;
-void printtriangle(int numbers[][SIZE]);
+const int MAX = 100;
 
-void printtriangle(int num[][SIZE])
+void getRow(int numbers[], int rows, int cols, int row, int result[]);
+void getCol(int numbers[], int rows, int cols, int col, int result[]);
+
+void getRow(int numbers[], int rows, int cols, int row, int result[])
 {
-    ofstream ofs;
-
-    ofs.close();
+    for (int i = 0; i < cols; i++)
+    {
+        result[i] = numbers[(row - 1) * rows + i];
+    }
+}
+void getCol(int numbers[], int rows, int cols, int col, int result[])
+{
+    for (int i = 0; i < rows; i++)
+    {
+        result[i] = numbers[(col - 1) + (rows * i)];
+    }
 }
