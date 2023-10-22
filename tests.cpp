@@ -7,32 +7,65 @@
 // tests for exercise 1
 TEST_CASE("Ex1 3x3() ", "[example]")
 {
-	fstream file;
-	int num;
-	int numbers[SIZE][SIZE] = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}};
+	int numbers[MAX] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+	/*****************************************
+	1	2	3
+	4	5	6
+	7 	8	9
+	*****************************************/
+	int result[MAX];
+	int rows = 3;
+	int cols = 3;
+	int row = 2;
+	int col = 1;
 
-	printtriangle(numbers);
+	getRow(numbers, rows, cols, row, result);
+	REQUIRE(result[0] == 3);
+	REQUIRE(result[1] == 4);
+	REQUIRE(result[2] == 5);
+	for (int i = 0; i < cols; i++)
+		cout << result[i] << "\t";
+	cout << " The result array " << endl;
 
-	file.open("output.txt", ios::in | ios::out);
-	if (!file)
-	{
-		cout << "file open error 2\n";
-	}
-	INFO("There is no file output.txt");
-	REQUIRE(file);
-	file >> num;
-	REQUIRE(num == 0);
-	file >> num;
-	REQUIRE(num == 3);
-	file >> num;
-	REQUIRE(num == 4);
-	file >> num;
-	REQUIRE(num == 6);
-	file >> num;
-	REQUIRE(num == 7);
-	file >> num;
-	REQUIRE(num == 8);
-	file.close();
+	getCol(numbers, rows, cols, col, result);
+	REQUIRE(result[0] == 0);
+	REQUIRE(result[1] == 3);
+	REQUIRE(result[2] == 6);
+	for (int i = 0; i < rows; i++)
+		cout << result[i] << "\t";
+	cout << " The result array " << endl;
+}
+TEST_CASE("Ex2 5x4() ", "[example]")
+{
+	int numbers[MAX] = {6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 11, 12, 13, 14, 15};
+	/*****************************************
+	6	7	8	9	10
+	1	2	3 	4	5
+	16	17 	18	19	20
+	11	12 	13	14	15
+	*****************************************/
+	int result[MAX];
+	int rows = 4;
+	int cols = 5;
+	int row = 4;
+	int col = 4;
 
-	// REQUIRE(number[idx] == usernum);
+	getRow(numbers, rows, cols, row, result);
+	for (int i = 0; i < cols; i++)
+		cout << result[i] << "\t";
+	cout << " The result array " << endl;
+	REQUIRE(result[0] == 11);
+	REQUIRE(result[1] == 12);
+	REQUIRE(result[2] == 13);
+	REQUIRE(result[3] == 14);
+	REQUIRE(result[4] == 15);
+
+	getCol(numbers, rows, cols, col, result);
+	for (int i = 0; i < rows; i++)
+		cout << result[i] << "\t";
+	cout << " The result array " << endl;
+	REQUIRE(result[0] == 9);
+	REQUIRE(result[1] == 4);
+	REQUIRE(result[2] == 19);
+	REQUIRE(result[3] == 14);
 }
