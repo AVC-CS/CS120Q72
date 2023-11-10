@@ -19,7 +19,7 @@ int main()
 	for (int i = 0; i < cols; i++)
 		cout << result[i] << "\t";
 	cout << endl;
-	col = 0;
+	col = 1;
 	getCol(numbers, rows, cols, col, result);
 	for (int i = 0; i < rows; i++)
 		cout << result[i] << "\t";
