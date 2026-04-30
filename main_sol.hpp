@@ -9,16 +9,12 @@ void getCol(int numbers[], int rows, int cols, int col, int result[]);
 
 void getRow(int numbers[], int rows, int cols, int row, int result[])
 {
-    // TODO
     for (int i = 0; i < cols; i++)
         result[i] = numbers[(row - 1) * cols + i];
-    // END TODO
 }
 
 void getCol(int numbers[], int rows, int cols, int col, int result[])
 {
-    // TODO
     for (int i = 0; i < rows; i++)
         result[i] = numbers[(col - 1) + cols * i];
-    // END TODO
 }
